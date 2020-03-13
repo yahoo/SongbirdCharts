@@ -1,9 +1,6 @@
 # Yahoo Finance Songbird Charts
 >  Allows for other apps to render accessible audio charts
 
-<img src="https://git.ouroath.com/storage/user/21438/files/2ee38e80-ddf2-11e9-86d2-54389ea09b64" width="310" height="630" /> <img src="https://git.ouroath.com/storage/user/21438/files/30ad5200-ddf2-11e9-9d5f-741125155604" width="310" height="630" />
-<img src="https://git.ouroath.com/storage/user/21438/files/3440d900-ddf2-11e9-80cb-3cff61f8efff" width="310" height="630" /> <img src="https://git.ouroath.com/storage/user/21438/files/ba601e00-ddf8-11e9-8672-af6273c27d69" width="310" height="630" />
-
 Charts such as stocks, sports scores and political polls are still almost impossible to use for people with visual impairment. The quick summary of thousands or more data points charts are meant for is virtually not usable for about 300 million people worldwide and for users on a voice interface. This is a first step towards changing that. 
 
 ## Table of Contents
