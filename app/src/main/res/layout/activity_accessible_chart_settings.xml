@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:theme="@style/ActionBarTheme"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/big_margin">
+
+            <TextView
+                android:id="@+id/order_title"
+                android:text="@string/accessible_settings_format_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/primary"
+                android:accessibilityHeading="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="p"/>
+
+            <RadioGroup
+                android:id="@+id/order_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/med_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/order_title">
+
+                <RadioButton
+                    android:text="@string/accessible_point_order_x_y"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"/>
+
+                <RadioButton
+                    android:text="@string/accessible_point_order_y_x"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"/>
+
+                <RadioButton
+                    android:text="@string/accessible_point_order_y"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/date_horizon_title"
+                android:text="@string/accessible_settings_time_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/primary"
+                android:accessibilityHeading="true"
+                android:layout_marginTop="@dimen/big_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/order_buttons"
+                tools:targetApi="p"/>
+
+            <RadioGroup
+                android:id="@+id/date_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/med_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/date_horizon_title">
+
+                <RadioButton
+                    android:text="@string/accessible_settings_time_only"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"/>
+
+                <RadioButton
+                    android:text="@string/accessible_settings_month_day_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"/>
+
+                <RadioButton
+                    android:text="@string/accessible_settings_month_day_year_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/pitch_title"
+                android:text="@string/pitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/big_margin"
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/primary"
+                android:accessibilityHeading="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/date_buttons"
+                tools:targetApi="p" />
+
+            <LinearLayout
+                android:id="@+id/pitch_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginTop="@dimen/med_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pitch_title">
+
+                <EditText
+                    android:id="@+id/min_freq_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"
+                    android:hint="@string/minimum_frequency"
+                    android:inputType="number"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:text="@string/to"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"
+                    android:gravity="center"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/max_freq_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/primary"
+                    android:hint="@string/maximum_frequency"
+                    android:inputType="number"
+                    android:layout_weight="2"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/echo_title"
+                android:text="@string/echo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/big_margin"
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/primary"
+                android:accessibilityHeading="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pitch_options"
+                tools:targetApi="p" />
+
+            <ToggleButton
+                android:id="@+id/echo_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/echo_button_content_description"
+                android:layout_marginTop="@dimen/med_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/echo_title"
+                style="@style/BrandButtonStyle"/>
+
+            <TextView
+                android:id="@+id/feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send_feedback"
+                android:layout_marginTop="@dimen/big_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/echo_button"
+                style="@style/BrandButtonStyle"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

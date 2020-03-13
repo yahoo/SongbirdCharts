@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="alert">#FF4D52</color>
+    <color name="alert_40">#66FF4D52</color>
+    <color name="caution">#FF8B12</color>
+    <color name="warning">#FFDE00</color>
+    <color name="accent">#008F88</color>
+    <color name="money">#1AC567</color>
+    <color name="money_40">#661AC567</color>
+    <color name="action">#188FFF</color>
+    <color name="action_20">#33188FFF</color>
+    <color name="brand">#7759FF</color>
+    <color name="premium">#CC008C</color>
+    <color name="background">#000000</color>
+    <color name="card">#101518</color>
+    <color name="nested_card">#1D2228</color>
+    <color name="incognito">#232A31</color>
+    <color name="tertiary">#828C93</color>
+    <color name="secondary">#B9BDC5</color>
+    <color name="primary">#F0F3F5</color>
+
+    <!-- Toolbar Colors -->
+    <color name="toolbar">@color/color_primary</color>
+    <color name="toolbar_item">@color/primary</color>
+
+    <color name="chart_settings_icon_tint">@color/solid_white</color>
+</resources>

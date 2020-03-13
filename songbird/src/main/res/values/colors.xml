@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="alert">#F0162F</color>
+    <color name="alert_40">#66F0162F</color>
+    <color name="caution">#FF6E0C</color>
+    <color name="warning">#FFA700</color>
+    <color name="accent">#008F88</color>
+    <color name="money">#089E35</color>
+    <color name="money_40">#66089E35</color>
+    <color name="action">#0F69FF</color>
+    <color name="action_20">#330F69FF</color>
+    <color name="brand">#6001D2</color>
+    <color name="premium">#CC008C</color>
+    <color name="background">#F5F8FA</color>
+    <color name="card">#FFFFFF</color>
+    <color name="nested_card">#F5F8FA</color>
+    <color name="incognito">#E0E4E9</color>
+    <color name="tertiary">#828C93</color>
+    <color name="secondary">#5B636A</color>
+    <color name="primary">#101518</color>
+
+    <!-- Normal Colors-->
+    <color name="solid_white">#ffffff</color>
+    <color name="white_50">#80ffffff</color>
+    <color name="solid_black">#000000</color>
+    <color name="black_75">#BF000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="black_30">#4D000000</color>
+    <color name="black_15">#26000000</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <!-- Default Colors -->
+    <color name="color_primary">@color/background</color>
+    <color name="color_primary_dark">@color/solid_black</color>
+    <color name="color_accent">@color/brand</color>
+    <color name="color_control_normal">@color/tertiary</color>
+    <color name="color_control_activated">@color/tertiary</color>
+    <color name="color_control_highlight">@color/incognito</color>
+
+    <!-- Toolbar Colors -->
+    <color name="toolbar">@color/solid_white</color>
+    <color name="toolbar_item">@color/primary</color>
+
+    <!-- SparkLine & Chart -->
+    <color name="chart_line">@color/tertiary</color>
+    <color name="chart_pos_stroke">@color/money</color>
+    <color name="chart_neg_stroke">@color/alert</color>
+    <color name="chart_pos_fill">@color/money_40</color>
+    <color name="chart_neg_fill">@color/alert_40</color>
+
+    <color name="chart_settings_icon_tint">@color/solid_black</color>
+
+    <color name="chart_background">@color/card</color>
+
+    <color name="chart_range_selected_range_color">@color/brand</color>
+    <color name="chart_range_unselected_range_color">@color/incognito</color>
+
+    <color name="chart_range_selected_text_color">@color/solid_white</color>
+    <color name="chart_range_unselected_text_color">@color/primary</color>
+    <color name="chart_range_disabled_text_color">@color/tertiary</color>
+
+    <color name="native_volume_bar_color">@color/tertiary</color>
+
+</resources>
