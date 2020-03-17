@@ -1,4 +1,4 @@
-# Yahoo Finance Songbird Charts
+# Songbird Charts
 >  Allows for other apps to render accessible audio charts
 
 <img src="https://user-images.githubusercontent.com/12967899/76646108-c370b300-6530-11ea-98a5-1aa03145c31b.png" width="310" height="630" /> <img src="https://user-images.githubusercontent.com/12967899/76646112-c66ba380-6530-11ea-812e-03c05154d7b5.png" width="310" height="630" />
