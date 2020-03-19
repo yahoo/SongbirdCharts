@@ -6,6 +6,10 @@
 
 Charts such as stocks, sports scores and political polls are still almost impossible to use for people with visual impairment. The quick summary of thousands or more data points charts are meant for is virtually not usable for about 300 million people worldwide and for users on a voice interface. This is a first step towards changing that. 
 
+# Demo video
+
+https://youtu.be/d_c-auuDsz8 here is a demo video of audio charts in action
+
 ## Table of Contents
 
 - [Background](#background)
