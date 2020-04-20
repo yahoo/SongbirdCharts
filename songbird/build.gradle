@@ -2,7 +2,7 @@ plugins {
     id 'maven-publish'
 }
 group = 'com.yahoo.finance'
-version = sdk_version
+version = "1.0.1"
 project.ext.artifactId = 'songbird'
 
 apply plugin: 'com.android.library'
@@ -15,7 +15,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        minSdkVersion deps.build.minSdkVersion
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -33,9 +33,9 @@ android {
 }
 
 dependencies {
-    implementation deps.android.material
-    implementation deps.android.annotations
-    implementation deps.android.ktx
+    implementation "com.google.android.material:material:1.0.0"
+    implementation "androidx.annotation:annotation:1.0.0"
+    implementation "androidx.core:core-ktx:1.0.0"
 }
 
 repositories {
