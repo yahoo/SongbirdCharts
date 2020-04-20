@@ -24,6 +24,32 @@ https://youtu.be/d_c-auuDsz8 here is a demo video of audio charts in action
 This project embodies Verizon Media's commitment to accessibility and to going above and beyond in making our products accessible to all. What started as a conversation about the state of charts for users with visual impairment led to an initial prototype, several user stidies and finally, this solution presenting primarily visual information with music and haptics. We realize that this problem is bigger than financial graphs are also hoping to see where the open source community takes this approach and applies it to interfaces such as voice, web etc. The tones are played in Hz. This is largely a reference implementation and we'll try to review pull requests as we can. We are however not sure of the SLAs yet. Thank you! 
 
 ## Install
+### Gradle integration
+
+In `dependencies` section of modules `build.gradle` add reference
+to SDK library:
+
+```
+gradle
+
+// Project-wide build.gradle
+// Add maven repository
+allprojects {
+    repositories {
+        maven { url 'https://raw.github.com/yahoo/SongbirdCharts/songbird/' }
+    }
+}
+
+// App build.gradle
+dependencies {
+    // ...
+
+    // Songbird SDK
+    compile 'com.yahoo.finance:songbird:1.0.1' // Use latest version
+
+    // ...   
+}
+```
 If you've never used git before, please take a moment to familiarize yourself with [what it is and how it works](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics). To install this project, you'll [need to have git installed and set up](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on your local dev environment.
 
 ## Usage
