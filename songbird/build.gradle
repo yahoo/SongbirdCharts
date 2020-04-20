@@ -1,3 +1,6 @@
+plugins {
+    id 'maven-publish'
+}
 group = 'com.yahoo.finance'
 version = sdk_version
 project.ext.artifactId = 'songbird'
@@ -37,4 +40,26 @@ dependencies {
 
 repositories {
     mavenCentral()
+}
+publishing {
+    repositories {
+        maven {
+            url = "${rootDir}"
+        }
+    }
+}
+
+// Based on Google's guidance
+// https://developer.android.com/studio/build/maven-publish-plugin
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = project.group
+                artifactId = project.ext.artifactId
+                version = project.version
+            }
+        }
+    }
 }
