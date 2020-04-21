@@ -30,8 +30,6 @@ In `dependencies` section of modules `build.gradle` add reference
 to SDK library:
 
 ```
-gradle
-
 // Project-wide build.gradle
 // Add maven repository
 allprojects {
