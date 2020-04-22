@@ -20,7 +20,7 @@ class AudioChartAudioHelper(
 
     companion object {
         const val TIMER_NAME = "Summary"
-        const val TIMER_DELAY = 500L
+        const val TIMER_DELAY = 250L
         const val VOLTAGE = 32767
         const val SESSION_ID = 1
     }
