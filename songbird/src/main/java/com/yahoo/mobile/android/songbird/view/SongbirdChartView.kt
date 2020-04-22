@@ -131,7 +131,12 @@ class SongbirdChartView @JvmOverloads constructor(
     }
 
     fun playChartPoint(index: Int) {
-        audioChartAudioHelper.onPointFocused(chartViewModel.benchmark, chartViewModel.chartDataPoints[index].value)
+        if (index < chartViewModel.chartDataPoints.size) {
+            audioChartAudioHelper.onPointFocused(
+                chartViewModel.benchmark,
+                chartViewModel.chartDataPoints[index].value
+            )
+        }
     }
 
     fun dispose() {

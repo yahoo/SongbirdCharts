@@ -20,7 +20,7 @@ class AudioChartAudioHelper(
 
     companion object {
         const val TIMER_NAME = "Summary"
-        const val TIMER_DELAY = 250L
+        const val TIMER_DELAY = 500L
         const val VOLTAGE = 32767
         const val SESSION_ID = 1
     }
@@ -117,7 +117,8 @@ class AudioChartAudioHelper(
 
     fun playSummaryAudio(previousClose: Double, points: List<Double>) {
         timer?.cancel()
-        timer = Timer(TIMER_NAME, false).schedule(TIMER_DELAY) {
+        summaryIndex = 0
+        timer = Timer(TIMER_NAME, false).schedule(0, TIMER_DELAY) {
             if (summaryIndex < points.size) {
                 playToneAtGivenProgress(previousClose, points[summaryIndex++])
             }
