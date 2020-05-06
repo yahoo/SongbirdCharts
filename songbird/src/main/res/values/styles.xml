@@ -3,41 +3,39 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryDark">@color/color_primary_dark</item>
-        <item name="colorAccent">@color/brand</item>
+        <item name="colorAccent">@color/songbird_purple</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:textColorPrimary">@color/primary</item>
-        <item name="android:windowBackground">@color/background</item>
-        <item name="colorControlNormal">@color/color_control_normal</item>
-        <item name="colorControlActivated">@color/color_control_activated</item>
-        <item name="colorControlHighlight">@color/color_control_highlight</item>
-        <item name="android:textColor">@color/primary</item>
+        <item name="android:textColorPrimary">@color/songbird_primary</item>
+        <item name="android:windowBackground">@color/songbird_window_background</item>
+        <item name="colorControlNormal">@color/songbird_color_control_normal</item>
+        <item name="colorControlActivated">@color/songbird_color_control_activated</item>
+        <item name="colorControlHighlight">@color/songbird_color_control_highlight</item>
+        <item name="android:textColor">@color/songbird_primary</item>
     </style>
 
     <style name="ApplicationToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/toolbar</item>
+        <item name="android:background">@color/songbird_toolbar</item>
         <item name="titleTextAppearance">@style/ToolbarTextAppearance</item>
     </style>
 
     <style name="ToolbarTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/medium_large_text_size</item>
-        <item name="android:textColor">@color/toolbar_item</item>
+        <item name="android:textColor">@color/songbird_toolbar_item</item>
     </style>
 
     <style name="ActionBarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="colorControlNormal">@color/toolbar_item</item>
-        <item name="android:textColorPrimary">@color/toolbar_item</item>
+        <item name="colorControlNormal">@color/songbird_toolbar_item</item>
+        <item name="android:textColorPrimary">@color/songbird_toolbar_item</item>
         <item name="android:displayOptions">showHome</item>
         <item name="displayOptions">showHome|homeAsUp</item>
         <item name="toolbarStyle">@style/ApplicationToolBarStyle</item>
         <!-- Changes overflow menu background -->
-        <item name="android:colorBackground">@color/toolbar</item>
+        <item name="android:colorBackground">@color/songbird_toolbar</item>
     </style>
 
     <style name="BrandButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:textColor">@color/solid_white</item>
+        <item name="android:textColor">@color/songbird_white</item>
         <item name="android:background">@drawable/shape_rounded_rect_brand</item>
     </style>
 

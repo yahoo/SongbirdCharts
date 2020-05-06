@@ -54,28 +54,28 @@ class AudioChartView @JvmOverloads constructor(
         strokeCap = Paint.Cap.ROUND
         pathEffect = DashPathEffect(FloatArray(2) { interval[it] }, 0.0f)
         strokeWidth = context.resources.dpToPx(2).toFloat()
-        color = ContextCompat.getColor(context, R.color.chart_line)
+        color = ContextCompat.getColor(context, R.color.songbird_chart_line)
     }
     private val textPaint = Paint().apply {
         isAntiAlias = false
         isDither = false
         textSize = context.resources.getDimension(R.dimen.regular_text_size)
         strokeWidth = context.resources.dpToPx(5).toFloat()
-        color = ContextCompat.getColor(context, R.color.secondary)
+        color = ContextCompat.getColor(context, R.color.songbird_text)
     }
     private val axisPaint = Paint().apply {
         isAntiAlias = false
         isDither = false
         textSize = context.resources.getDimension(R.dimen.regular_text_size)
         strokeWidth = context.resources.dpToPx(STROKE_WIDTH).toFloat()
-        color = ContextCompat.getColor(context, R.color.chart_line)
+        color = ContextCompat.getColor(context, R.color.songbird_chart_line)
     }
     private val axisLinePaint = Paint().apply {
         isAntiAlias = false
         isDither = false
         style = Paint.Style.STROKE
         strokeWidth = context.resources.dpToPx(1).toFloat()
-        color = ContextCompat.getColor(context, R.color.chart_line)
+        color = ContextCompat.getColor(context, R.color.songbird_chart_line)
     }
     private val latestValuePaint = Paint().apply {
         isAntiAlias = false
@@ -96,7 +96,7 @@ class AudioChartView @JvmOverloads constructor(
 
     private fun updateColors() {
         fillPaint.color = ContextCompat.getColor(context, chartViewModel.fillColor)
-        strokePaint.color =ContextCompat.getColor(context, chartViewModel.strokeColor)
+        strokePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
         latestValuePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
         benchmarkPaint.color = ContextCompat.getColor(context, chartViewModel.benchmarkColor)
         fillPaint.shader = LinearGradient(
@@ -104,7 +104,7 @@ class AudioChartView @JvmOverloads constructor(
             height.toFloat() - gradientOffset,
             0.0f,
             0.0f,
-            ContextCompat.getColor(context, R.color.chart_background),
+            ContextCompat.getColor(context, R.color.songbird_chart_background),
             ContextCompat.getColor(context, chartViewModel.fillColor),
             Shader.TileMode.MIRROR
         )
