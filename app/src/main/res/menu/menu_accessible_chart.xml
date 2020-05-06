@@ -6,7 +6,7 @@
         android:id="@+id/settings"
         android:title="@string/settings"
         android:icon="@drawable/ic_settings"
-        app:iconTint="@color/chart_settings_icon_tint"
+        app:iconTint="@color/songbird_chart_settings_icon_tint"
         app:showAsAction="always" />
 
 </menu>

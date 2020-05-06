@@ -43,9 +43,9 @@ object AudioChartRepository {
                     label = DateTimeUtils.getTimeOnly(points[NUMBER_OF_POINTS - 5].timestamp)
                 )
             ),
-            fillColor = if (points.last().value > benchmark) R.color.chart_pos_fill else R.color.chart_neg_fill,
-            strokeColor = if (points.last().value > benchmark) R.color.chart_pos_stroke else R.color.chart_neg_stroke,
-            benchmarkColor = R.color.chart_line
+            fillColor = if (points.last().value > benchmark) R.color.songbird_chart_pos_fill else R.color.songbird_chart_neg_fill,
+            strokeColor = if (points.last().value > benchmark) R.color.songbird_chart_pos_stroke else R.color.songbird_chart_neg_stroke,
+            benchmarkColor = R.color.songbird_chart_line
         )
     }
 
