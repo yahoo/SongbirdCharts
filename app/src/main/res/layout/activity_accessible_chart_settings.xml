@@ -13,7 +13,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:theme="@style/ActionBarTheme"
+            android:theme="@style/SongbirdActionBarTheme"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"/>
 
@@ -195,7 +195,7 @@
                 android:layout_marginTop="@dimen/med_margin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/echo_title"
-                style="@style/BrandButtonStyle"/>
+                style="@style/SongbirdButtonStyle"/>
 
             <TextView
                 android:id="@+id/feedback"
@@ -205,7 +205,7 @@
                 android:layout_marginTop="@dimen/big_margin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/echo_button"
-                style="@style/BrandButtonStyle"/>
+                style="@style/SongbirdButtonStyle"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

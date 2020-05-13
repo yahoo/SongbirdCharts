@@ -6,7 +6,7 @@
                  android:icon="@mipmap/ic_launcher"
                  android:roundIcon="@drawable/ic_show_chart_purple"
                  android:supportsRtl="true"
-                 android:theme="@style/AppTheme"
+                 android:theme="@style/SongbirdAppTheme"
                  android:name=".base.ApplicationBase">
         <activity android:name="com.yahoo.mobile.android.audiocharts.sample.settings.AudioChartSettingsActivity"/>
         <activity android:name="com.yahoo.mobile.android.audiocharts.sample.SampleSongbirdChartActivity"/>
