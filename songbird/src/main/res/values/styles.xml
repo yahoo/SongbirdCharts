@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="SongbirdAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/songbird_purple</item>
         <item name="windowActionBar">false</item>
@@ -14,27 +14,27 @@
         <item name="android:textColor">@color/songbird_primary</item>
     </style>
 
-    <style name="ApplicationToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">
+    <style name="SongbirdApplicationToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">
         <item name="android:background">@color/songbird_toolbar</item>
-        <item name="titleTextAppearance">@style/ToolbarTextAppearance</item>
+        <item name="titleTextAppearance">@style/SongbirdToolbarTextAppearance</item>
     </style>
 
-    <style name="ToolbarTextAppearance" parent="TextAppearance.AppCompat">
+    <style name="SongbirdToolbarTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/medium_large_text_size</item>
         <item name="android:textColor">@color/songbird_toolbar_item</item>
     </style>
 
-    <style name="ActionBarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="SongbirdActionBarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="colorControlNormal">@color/songbird_toolbar_item</item>
         <item name="android:textColorPrimary">@color/songbird_toolbar_item</item>
         <item name="android:displayOptions">showHome</item>
         <item name="displayOptions">showHome|homeAsUp</item>
-        <item name="toolbarStyle">@style/ApplicationToolBarStyle</item>
+        <item name="toolbarStyle">@style/SongbirdApplicationToolBarStyle</item>
         <!-- Changes overflow menu background -->
         <item name="android:colorBackground">@color/songbird_toolbar</item>
     </style>
 
-    <style name="BrandButtonStyle" parent="Widget.AppCompat.Button">
+    <style name="SongbirdButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@color/songbird_white</item>
         <item name="android:background">@drawable/shape_rounded_rect_brand</item>
     </style>
