@@ -19,9 +19,9 @@ class SongbirdChartViewUtil(
 
     companion object {
         const val LINE_HEIGHT_PERCENTAGE = 0.8f
-        const val LINE_WIDTH_PERCENTAGE = 0.85f
         const val Y_AXIS_LABEL_OVERLAP_THRESHOLD = 30
         const val PREVIOUS_CLOSE_TEXT_LEFT_PADDING = 45
+        const val RIGHT_PADDING = 60
         const val LINE_LEFT_PADDING = 30
         const val X_AXIS_HEIGHT_PERCENTAGE = 0.2f
         const val X_AXIS_LEFT_PADDING = 20
@@ -31,7 +31,7 @@ class SongbirdChartViewUtil(
         private const val Y_AXIS_OVERLAP_OFFSET = 40
     }
 
-    private val lineWidth = width * LINE_WIDTH_PERCENTAGE
+    private val lineWidth = width.toFloat()
     private val lineHeight = height * LINE_HEIGHT_PERCENTAGE
     private val chartHeight = lineHeight + topPadding
     private val xAxisHeight = height * X_AXIS_HEIGHT_PERCENTAGE
@@ -78,7 +78,7 @@ class SongbirdChartViewUtil(
 
             return ScaledChartData(
                 benchmarkY = getScaledY(benchmark.toFloat(), highestValue.toFloat(), valueDelta.toFloat()),
-                benchmarkWidth = width.toFloat() * if (showYAxis) LINE_WIDTH_PERCENTAGE else 1f,
+                benchmarkWidth = width.toFloat(),
                 points = scaledPoints,
                 xAxises = xAxises,
                 yAxis = if (showYAxis) generateScaledYAxis(lastY, this) else null

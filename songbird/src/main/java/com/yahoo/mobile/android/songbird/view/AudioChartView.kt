@@ -90,24 +90,7 @@ class AudioChartView @JvmOverloads constructor(
 
     fun setChartViewModel(chartViewModel: AudioChartViewModel) {
         this.chartViewModel = chartViewModel
-        updateColors()
         invalidate()
-    }
-
-    private fun updateColors() {
-        fillPaint.color = ContextCompat.getColor(context, chartViewModel.fillColor)
-        strokePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
-        latestValuePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
-        benchmarkPaint.color = ContextCompat.getColor(context, chartViewModel.benchmarkColor)
-        fillPaint.shader = LinearGradient(
-            0.0f,
-            height.toFloat() - gradientOffset,
-            0.0f,
-            0.0f,
-            ContextCompat.getColor(context, R.color.songbird_chart_background),
-            ContextCompat.getColor(context, chartViewModel.fillColor),
-            Shader.TileMode.MIRROR
-        )
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -127,9 +110,20 @@ class AudioChartView @JvmOverloads constructor(
             canvas.drawText(noResultsString, width / 2.3f, height / 2f, textPaint)
         } else {
             with(chartViewUtil.getScaledChartData(chartViewModel)) {
-                // Benchmark
-                canvas.drawLine(0f, benchmarkY, benchmarkWidth, benchmarkY, benchmarkPaint)
-
+                // Gradient
+                fillPaint.color = ContextCompat.getColor(context, chartViewModel.fillColor)
+                strokePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
+                latestValuePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
+                benchmarkPaint.color = ContextCompat.getColor(context, chartViewModel.benchmarkColor)
+                fillPaint.shader = LinearGradient(
+                    0.0f,
+                    benchmarkY,
+                    0.0f,
+                    0.0f,
+                    ContextCompat.getColor(context, R.color.songbird_chart_background),
+                    ContextCompat.getColor(context, chartViewModel.fillColor),
+                    Shader.TileMode.MIRROR
+                )
                 points.forEachIndexed { index, scaledPoint ->
                     xAxises[index]?.let {
                         canvas.drawLine(it.startX, it.startY, it.endX, it.endY, axisLinePaint)
@@ -153,17 +147,21 @@ class AudioChartView @JvmOverloads constructor(
                                 fillPaint
                             )
                             yAxis?.let {
+                                val highestPrice = ValueFormatter.getAsFormattedPrice(it.highestPrice, it.priceHint)
+                                val rightOffset = axisPaint.measureText(highestPrice) + SongbirdChartViewUtil.RIGHT_PADDING
+                                // Benchmark
+                                canvas.drawLine(0f, benchmarkY, benchmarkWidth - rightOffset, benchmarkY, benchmarkPaint)
                                 // Previous close
                                 canvas.drawText(
                                     ValueFormatter.getAsFormattedPrice(it.previousClose, it.priceHint),
-                                    it.previousCloseX,
+                                    it.previousCloseX - rightOffset,
                                     it.previousCloseY,
                                     textPaint
                                 )
                                 // Current price
                                 canvas.drawText(
                                     ValueFormatter.getAsFormattedPrice(it.currentPrice, it.priceHint),
-                                    it.currentPriceX,
+                                    it.currentPriceX - rightOffset,
                                     it.currentPriceY,
                                     latestValuePaint
                                 )
@@ -171,8 +169,8 @@ class AudioChartView @JvmOverloads constructor(
                                 // If high/low price does not touch previous close and current price, then draw it
                                 if (it.drawHighestPrice) {
                                     canvas.drawText(
-                                        ValueFormatter.getAsFormattedPrice(it.highestPrice, it.priceHint),
-                                        it.highestPriceX,
+                                        highestPrice,
+                                        it.highestPriceX - rightOffset,
                                         it.highestPriceY,
                                         axisPaint
                                     )
@@ -180,16 +178,19 @@ class AudioChartView @JvmOverloads constructor(
                                 if (it.drawLowestPrice) {
                                     canvas.drawText(
                                         ValueFormatter.getAsFormattedPrice(it.lowestPrice, it.priceHint),
-                                        it.lowestPriceX,
+                                        it.lowestPriceX - rightOffset,
                                         it.lowestPriceY,
                                         axisPaint
                                     )
                                 }
 
                                 // Y-axis lines
-                                canvas.drawLine(it.startX, it.topY, it.endX, it.topY, axisLinePaint)
-                                canvas.drawLine(it.startX, it.topY, it.startX, it.bottomY, axisLinePaint)
-                                canvas.drawLine(it.startX, it.bottomY, it.endX, it.bottomY, axisLinePaint)
+                                canvas.drawLine(it.startX - rightOffset, it.topY, it.endX - rightOffset, it.topY, axisLinePaint)
+                                canvas.drawLine(it.startX - rightOffset, it.topY, it.startX - rightOffset, it.bottomY, axisLinePaint)
+                                canvas.drawLine(it.startX - rightOffset, it.bottomY, it.endX - rightOffset, it.bottomY, axisLinePaint)
+                            } ?: kotlin.run {
+                                // Benchmark
+                                canvas.drawLine(0f, benchmarkY, benchmarkWidth, benchmarkY, benchmarkPaint)
                             }
                         }
                     }

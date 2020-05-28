@@ -53,7 +53,7 @@ object AudioChartRepository {
         val points = mutableListOf<AudioChartPointViewModel>()
         val startTime = System.currentTimeMillis()
         for (i in 0 until NUMBER_OF_POINTS) {
-            val value = Random.nextDouble()
+            val value = Random.nextDouble(0.0, 1000.0)
             val timestamp = startTime + TimeUnit.MINUTES.toMillis(i.toLong())
             points.add(
                 AudioChartPointViewModel(
