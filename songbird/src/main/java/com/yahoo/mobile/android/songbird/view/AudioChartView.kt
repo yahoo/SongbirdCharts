@@ -90,24 +90,7 @@ class AudioChartView @JvmOverloads constructor(
 
     fun setChartViewModel(chartViewModel: AudioChartViewModel) {
         this.chartViewModel = chartViewModel
-        updateColors()
         invalidate()
-    }
-
-    private fun updateColors() {
-        fillPaint.color = ContextCompat.getColor(context, chartViewModel.fillColor)
-        strokePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
-        latestValuePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
-        benchmarkPaint.color = ContextCompat.getColor(context, chartViewModel.benchmarkColor)
-        fillPaint.shader = LinearGradient(
-            0.0f,
-            height.toFloat() - gradientOffset,
-            0.0f,
-            0.0f,
-            ContextCompat.getColor(context, R.color.songbird_chart_background),
-            ContextCompat.getColor(context, chartViewModel.fillColor),
-            Shader.TileMode.MIRROR
-        )
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -130,6 +113,21 @@ class AudioChartView @JvmOverloads constructor(
                 // Benchmark
                 canvas.drawLine(0f, benchmarkY, benchmarkWidth, benchmarkY, benchmarkPaint)
 
+                // Gradient
+                fillPaint.color = ContextCompat.getColor(context, chartViewModel.fillColor)
+                strokePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
+                latestValuePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
+                benchmarkPaint.color = ContextCompat.getColor(context, chartViewModel.benchmarkColor)
+                val scaledChartData = chartViewUtil.getScaledChartData(chartViewModel)
+                fillPaint.shader = LinearGradient(
+                    0.0f,
+                    benchmarkY,
+                    0.0f,
+                    0.0f,
+                    ContextCompat.getColor(context, R.color.songbird_chart_background),
+                    ContextCompat.getColor(context, chartViewModel.fillColor),
+                    Shader.TileMode.MIRROR
+                )
                 points.forEachIndexed { index, scaledPoint ->
                     xAxises[index]?.let {
                         canvas.drawLine(it.startX, it.startY, it.endX, it.endY, axisLinePaint)

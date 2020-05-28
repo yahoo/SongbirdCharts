@@ -9,4 +9,6 @@
     <color name="songbird_toolbar_item">@color/songbird_primary</color>
 
     <color name="songbird_chart_settings_icon_tint">#ffffff</color>
+
+    <color name="songbird_chart_background">#000000</color>
 </resources>
