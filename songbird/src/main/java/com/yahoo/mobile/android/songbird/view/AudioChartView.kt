@@ -118,7 +118,6 @@ class AudioChartView @JvmOverloads constructor(
                 strokePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
                 latestValuePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
                 benchmarkPaint.color = ContextCompat.getColor(context, chartViewModel.benchmarkColor)
-                val scaledChartData = chartViewUtil.getScaledChartData(chartViewModel)
                 fillPaint.shader = LinearGradient(
                     0.0f,
                     benchmarkY,
