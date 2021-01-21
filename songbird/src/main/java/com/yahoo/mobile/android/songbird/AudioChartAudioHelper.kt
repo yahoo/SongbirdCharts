@@ -93,7 +93,9 @@ class AudioChartAudioHelper(
         )
 
         audioTrack.write(generatedSound, 0, generatedSound.size)
-        audioTrack.play()
+        if (audioTrack.state == AudioTrack.STATE_INITIALIZED) {
+            audioTrack.play()
+        }
 
         underPreviousCloseEffect.enabled = yValue < previousClose && echoEnabled
     }
