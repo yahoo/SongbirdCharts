@@ -10,20 +10,17 @@ import android.view.accessibility.AccessibilityEvent
 import androidx.annotation.LayoutRes
 import com.yahoo.mobile.android.songbird.R
 
-class AudioChartPointViewModel(
+class ScrubPointViewModel(
     val value: Double,
     val timestamp: Long,
     val index: Int,
-    defaultTalkbackString: String,
+    var heading: String = "",
+    var talkbackString: String,
     val onSwipeListener: (() -> Unit)
 ) {
 
     @LayoutRes
-    val resId: Int = R.layout.list_item_accessible_chart_point
-
-    var talkbackString: String = defaultTalkbackString
-
-    var heading: String = ""
+    val resId: Int = R.layout.list_item_scrub_point
 
     fun bind(point: View) {
         point.apply {

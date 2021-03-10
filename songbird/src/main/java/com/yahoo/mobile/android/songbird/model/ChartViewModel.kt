@@ -6,10 +6,10 @@ package com.yahoo.mobile.android.songbird.model
 
 import androidx.annotation.ColorRes
 
-class AudioChartViewModel(
+class ChartViewModel(
     val contentDescription: String,
     val benchmark: Double,
-    val chartDataPoints: List<AudioChartPointViewModel>,
+    val chartDataPoints: List<ScrubPointViewModel>,
     val priceHint: Int,
     val showXAxis: Boolean = true,
     val xAxisLabels: List<XAxisLabel> = listOf(),

@@ -142,15 +142,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/pitch_title">
 
-                <EditText
-                    android:id="@+id/min_freq_input"
+                <Spinner
+                    android:id="@+id/low_tone_input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/large_text_size"
                     android:textColor="@color/songbird_primary"
                     android:hint="@string/minimum_frequency"
                     android:inputType="number"
-                    android:layout_weight="2" />
+                    android:layout_weight="2"
+                    android:popupBackground="@color/songbird_primary_inverse"/>
 
                 <TextView
                     android:text="@string/to"
@@ -161,15 +162,16 @@
                     android:gravity="center"
                     android:layout_weight="1"/>
 
-                <EditText
-                    android:id="@+id/max_freq_input"
+                <Spinner
+                    android:id="@+id/high_tone_input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/large_text_size"
                     android:textColor="@color/songbird_primary"
                     android:hint="@string/maximum_frequency"
                     android:inputType="number"
-                    android:layout_weight="2"/>
+                    android:layout_weight="2"
+                    android:popupBackground="@color/songbird_primary_inverse"/>
 
             </LinearLayout>
 
@@ -197,7 +199,7 @@
                 app:layout_constraintTop_toBottomOf="@id/echo_title"
                 style="@style/SongbirdButtonStyle"/>
 
-            <TextView
+            <Button
                 android:id="@+id/feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

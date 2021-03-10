@@ -4,7 +4,7 @@
     <color name="songbird_window_background">#F5F8FA</color>
     <color name="songbird_primary">#101518</color>
 
-    <color name="songbird_white">#ffffff</color>
+    <color name="songbird_primary_inverse">#ffffff</color>
 
     <color name="songbird_color_accent">@color/songbird_purple</color>
     <color name="songbird_color_control_normal">#828C93</color>
@@ -12,7 +12,7 @@
     <color name="songbird_color_control_highlight">#E0E4E9</color>
 
     <!-- Toolbar Colors -->
-    <color name="songbird_toolbar">@color/songbird_white</color>
+    <color name="songbird_toolbar">@color/songbird_primary_inverse</color>
     <color name="songbird_toolbar_item">@color/songbird_primary</color>
 
     <!-- SparkLine & Chart -->

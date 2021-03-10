@@ -16,11 +16,15 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.yahoo.mobile.android.songbird.R
 import com.yahoo.mobile.android.songbird.extensions.dpToPx
-import com.yahoo.mobile.android.songbird.model.AudioChartViewModel
-import com.yahoo.mobile.android.songbird.util.SongbirdChartViewUtil
+import com.yahoo.mobile.android.songbird.model.ChartViewModel
+import com.yahoo.mobile.android.songbird.util.ChartScaler
 import com.yahoo.mobile.android.songbird.util.ValueFormatter
 
-class AudioChartView @JvmOverloads constructor(
+/**
+ * Responsible for rendering chart
+ * Does nothing audio related
+ */
+class ChartView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?,
     defStyleAttr: Int = 0,
@@ -31,8 +35,6 @@ class AudioChartView @JvmOverloads constructor(
         private const val STROKE_WIDTH = 5
     }
 
-    private val topPadding = context.resources.getDimension(R.dimen.songbird_chart_top_padding)
-    private val gradientOffset = topPadding * 1.7f
     private val interval = arrayOf(10.0f, 10.0f)
 
     private val fillPaint: Paint = Paint().apply {
@@ -85,17 +87,17 @@ class AudioChartView @JvmOverloads constructor(
     }
     private val noResultsString = context.getString(R.string.no_result)
 
-    private lateinit var chartViewModel: AudioChartViewModel
-    private lateinit var chartViewUtil: SongbirdChartViewUtil
+    private lateinit var chartViewModel: ChartViewModel
+    private lateinit var chartScaler: ChartScaler
 
-    fun setChartViewModel(chartViewModel: AudioChartViewModel) {
+    fun setChartViewModel(chartViewModel: ChartViewModel) {
         this.chartViewModel = chartViewModel
         invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
-        if (!::chartViewUtil.isInitialized) {
-            chartViewUtil = SongbirdChartViewUtil(width, height, context.resources.getDimensionPixelSize(R.dimen.songbird_chart_top_padding))
+        if (!::chartScaler.isInitialized) {
+            chartScaler = ChartScaler(width, height, context.resources.getDimensionPixelSize(R.dimen.songbird_chart_top_padding))
         }
         if (::chartViewModel.isInitialized) {
             drawGraph(canvas)
@@ -109,7 +111,7 @@ class AudioChartView @JvmOverloads constructor(
         if (chartViewModel.chartDataPoints.isEmpty()) {
             canvas.drawText(noResultsString, width / 2.3f, height / 2f, textPaint)
         } else {
-            with(chartViewUtil.getScaledChartData(chartViewModel)) {
+            with(chartScaler.getScaledChartData(chartViewModel)) {
                 // Gradient
                 fillPaint.color = ContextCompat.getColor(context, chartViewModel.fillColor)
                 strokePaint.color = ContextCompat.getColor(context, chartViewModel.strokeColor)
@@ -136,8 +138,8 @@ class AudioChartView @JvmOverloads constructor(
                         fillPath.lineTo(scaledPoint.x, scaledPoint.y)
                         strokePath.lineTo(scaledPoint.x, scaledPoint.y)
                         if (index == chartViewModel.chartDataPoints.size - 1) {
-                            fillPath.lineTo(scaledPoint.x, chartViewUtil.getChartHeight())
-                            fillPath.lineTo(0.0f, chartViewUtil.getChartHeight())
+                            fillPath.lineTo(scaledPoint.x, chartScaler.getChartHeight())
+                            fillPath.lineTo(0.0f, chartScaler.getChartHeight())
                             canvas.drawPath(
                                 strokePath,
                                 strokePaint
@@ -148,7 +150,7 @@ class AudioChartView @JvmOverloads constructor(
                             )
                             yAxis?.let {
                                 val highestPrice = ValueFormatter.getAsFormattedPrice(it.highestPrice, it.priceHint)
-                                val rightOffset = axisPaint.measureText(highestPrice) + SongbirdChartViewUtil.RIGHT_PADDING
+                                val rightOffset = axisPaint.measureText(highestPrice) + ChartScaler.RIGHT_PADDING
                                 // Benchmark
                                 canvas.drawLine(0f, benchmarkY, benchmarkWidth - rightOffset, benchmarkY, benchmarkPaint)
                                 // Previous close

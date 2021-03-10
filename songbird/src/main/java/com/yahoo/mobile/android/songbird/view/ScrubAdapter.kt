@@ -9,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yahoo.mobile.android.songbird.R
-import com.yahoo.mobile.android.songbird.model.AudioChartPointViewModel
+import com.yahoo.mobile.android.songbird.model.ScrubPointViewModel
 
-class AudioPointsAdapter : RecyclerView.Adapter<AudioPointsAdapter.ViewHolder>() {
+class ScrubAdapter : RecyclerView.Adapter<ScrubAdapter.ViewHolder>() {
 
     var focusedIndex: Int = -1
-    lateinit var items: List<AudioChartPointViewModel>
+    lateinit var items: List<ScrubPointViewModel>
 
     override fun getItemViewType(position: Int) = items[position].resId
 

@@ -35,7 +35,7 @@
     </style>
 
     <style name="SongbirdButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:textColor">@color/songbird_white</item>
+        <item name="android:textColor">@color/songbird_primary_inverse</item>
         <item name="android:background">@drawable/shape_rounded_rect_brand</item>
     </style>
 

@@ -3,4 +3,5 @@
     <string name="x_axis">X-Axis</string>
     <string name="y_axis">Y-Axis</string>
     <string name="open_sample_chart">Open Sample Chart</string>
+    <string name="visit_us_at_repo">Open an issue on our github repo to leave feedback! Thank you!</string>
 </resources>
