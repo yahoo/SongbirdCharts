@@ -7,7 +7,7 @@
     <string name="exit">Exit</string>
     <string name="summary_accessible_native_chart">Summarize chart</string>
     <string name="accessible_settings_format_title">Data Point Format</string>
-    <string name="pitch">Pitch Range (Hz)</string>
+    <string name="pitch">Tone High and Low</string>
     <string name="minimum_frequency">Minimum Frequency</string>
     <string name="maximum_frequency">Maximum Frequency</string>
     <string name="accessible_point_order_x_y">Time, Price</string>
@@ -78,4 +78,16 @@
     <string name="accessible_settings_time_only">Time only</string>
     <string name="accessible_settings_month_day_time">Month Day Time</string>
     <string name="accessible_settings_month_day_year_time">Month Day Year Time</string>
+
+    <string-array name="low_tones">
+        <item>C#1</item>
+        <item>F#1</item>
+        <item>A#1</item>
+    </string-array>
+
+    <string-array name="high_tones">
+        <item>A#5</item>
+        <item>F#5</item>
+        <item>C#5</item>
+    </string-array>
 </resources>

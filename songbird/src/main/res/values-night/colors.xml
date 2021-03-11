@@ -3,6 +3,7 @@
     <color name="songbird_purple">#7759FF</color>
     <color name="songbird_window_background">#000000</color>
     <color name="songbird_primary">#F0F3F5</color>
+    <color name="songbird_primary_inverse">#101518</color>
 
     <!-- Toolbar Colors -->
     <color name="songbird_toolbar">@color/songbird_window_background</color>

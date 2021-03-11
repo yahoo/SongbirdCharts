@@ -6,8 +6,10 @@ package com.yahoo.mobile.android.songbird.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.annotation.RawRes
+import com.yahoo.mobile.android.songbird.player.AudioPlayer
 
-class AudioChartSettingsHelper(
+class SettingsHelper(
     context: Context
 ) {
 
@@ -15,12 +17,13 @@ class AudioChartSettingsHelper(
         const val USER_PREF_KEY = "ACCESSIBLE_PREF_KEY"
         const val TALK_BACK_STRING_KEY = "TALKBACK_STRING_KEY"
         const val DATE_STRING_KEY = "DATE_STRING_KEY"
-        const val MINIMUM_FREQUENCY_KEY = "MINIMUM_FREQUENCY_KEY"
-        const val MAXIMUM_FREQUENCY_KEY = "MAXIMUM_FREQUENCY_KEY"
+        const val MINIMUM_TONE_KEY = "MINIMUM_TONE_KEY"
+        const val MAXIMUM_TONE_KEY = "MAXIMUM_TONE_KEY"
         const val ECHO_CHECKED_KEY = "ECHO_CHECKED_KEY"
-        const val MINIMUM_FREQUENCY = 200
-        const val MAXIMUM_FREQUENCY = 850
     }
+
+    private val minimumTone = 0
+    private val maximumTone = AudioPlayer.tones.size-1
 
     enum class TalkBackOrder {
         X_Y,
@@ -57,14 +60,14 @@ class AudioChartSettingsHelper(
                     )
                 }
             }
-            MINIMUM_FREQUENCY_KEY -> {
+            MINIMUM_TONE_KEY -> {
                 configurationUpdateListeners.forEach {
                     it.invoke(
                         AccessibleConfiguration.MinimumFrequencyConfiguration()
                     )
                 }
             }
-            MAXIMUM_FREQUENCY_KEY -> {
+            MAXIMUM_TONE_KEY -> {
                 configurationUpdateListeners.forEach {
                     it.invoke(
                         AccessibleConfiguration.MaximumFrequencyConfiguration()
@@ -137,26 +140,16 @@ class AudioChartSettingsHelper(
         setDateOrder(DateOrder.values()[position])
     }
 
-    fun getMinimumFrequency() = sharedPreferences.getInt(
-        MINIMUM_FREQUENCY_KEY,
-        MINIMUM_FREQUENCY
-    )
+    fun getMinimumTone() = sharedPreferences.getInt(MINIMUM_TONE_KEY, minimumTone)
 
-    fun setMinimumFrequency(minFrequency: Int) {
-        if (minFrequency in MINIMUM_FREQUENCY until MAXIMUM_FREQUENCY) {
-            sharedPreferences.edit().putInt(MINIMUM_FREQUENCY_KEY, minFrequency).apply()
-        }
+    fun setMinimumTone(@RawRes minTone: Int) {
+        sharedPreferences.edit().putInt(MINIMUM_TONE_KEY, minTone).apply()
     }
 
-    fun getMaximumFrequency() = sharedPreferences.getInt(
-        MAXIMUM_FREQUENCY_KEY,
-        MAXIMUM_FREQUENCY
-    )
+    fun getMaximumTone() = sharedPreferences.getInt(MAXIMUM_TONE_KEY, maximumTone)
 
-    fun setMaximumFrequency(maxFrequency: Int) {
-        if (maxFrequency in (MINIMUM_FREQUENCY + 1)..MAXIMUM_FREQUENCY) {
-            sharedPreferences.edit().putInt(MAXIMUM_FREQUENCY_KEY, maxFrequency).apply()
-        }
+    fun setMaximumTone(@RawRes maxTone: Int) {
+        sharedPreferences.edit().putInt(MAXIMUM_TONE_KEY, maxTone).apply()
     }
 
     fun getEchoChecked() = sharedPreferences.getBoolean(ECHO_CHECKED_KEY, true)

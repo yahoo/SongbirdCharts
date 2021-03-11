@@ -53,7 +53,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/songbird_primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/y_axis"/>
+            app:layout_constraintTop_toBottomOf="@id/y_axis"
+            style="@style/SongbirdButtonStyle"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

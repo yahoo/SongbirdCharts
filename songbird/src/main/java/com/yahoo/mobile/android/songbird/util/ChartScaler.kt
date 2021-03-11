@@ -4,14 +4,14 @@
  */
 package com.yahoo.mobile.android.songbird.util
 
-import com.yahoo.mobile.android.songbird.model.AudioChartViewModel
+import com.yahoo.mobile.android.songbird.model.ChartViewModel
 import com.yahoo.mobile.android.songbird.model.scaled.ScaledChartData
 import com.yahoo.mobile.android.songbird.model.scaled.ScaledPoint
 import com.yahoo.mobile.android.songbird.model.scaled.ScaledXAxis
 import com.yahoo.mobile.android.songbird.model.scaled.ScaledYAxis
 import kotlin.math.absoluteValue
 
-class SongbirdChartViewUtil(
+class ChartScaler(
     private val width: Int,
     private val height: Int,
     private val topPadding: Int
@@ -42,7 +42,7 @@ class SongbirdChartViewUtil(
     /**
      * Takes the chart's view model and scales it according to it's inflated height and width
      */
-    fun getScaledChartData(chartViewModel: AudioChartViewModel): ScaledChartData {
+    fun getScaledChartData(chartViewModel: ChartViewModel): ScaledChartData {
         with(chartViewModel) {
             val scaledPoints = mutableListOf<ScaledPoint>()
             val xAxises = mutableListOf<ScaledXAxis?>()
@@ -90,7 +90,7 @@ class SongbirdChartViewUtil(
      * Determines where the y-axis lines should be drawn and the positions of the labels
      * Handles collision of labels within a `Y_AXIS_LABEL_OVERLAP_THRESHOLD` threshold
      */
-    private fun generateScaledYAxis(y: Float, chartViewModel: AudioChartViewModel): ScaledYAxis {
+    private fun generateScaledYAxis(y: Float, chartViewModel: ChartViewModel): ScaledYAxis {
         with(chartViewModel) {
             var currentPriceYPosition = y + PREVIOUS_CLOSE_TEXT_TOP_PADDING
             var benchmarkYPosition = getScaledY(benchmark.toFloat(), highestValue.toFloat(), valueDelta.toFloat()) + PREVIOUS_CLOSE_TEXT_TOP_PADDING

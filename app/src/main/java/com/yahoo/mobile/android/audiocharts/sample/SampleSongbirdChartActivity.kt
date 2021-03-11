@@ -8,9 +8,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.yahoo.mobile.android.audiocharts.R
-import com.yahoo.mobile.android.songbird.model.AudioChartViewModel
+import com.yahoo.mobile.android.songbird.model.ChartViewModel
 import com.yahoo.mobile.android.songbird.view.SongbirdChartView
-import com.yahoo.mobile.android.audiocharts.sample.settings.AudioChartSettingsActivity
+import com.yahoo.mobile.android.audiocharts.sample.settings.SettingsActivity
 import com.yahoo.mobile.android.audiocharts.repository.AudioChartRepository
 
 class SampleSongbirdChartActivity : AppCompatActivity() {
@@ -26,7 +26,7 @@ class SampleSongbirdChartActivity : AppCompatActivity() {
             }
     }
 
-    private lateinit var chartViewModel: AudioChartViewModel
+    private lateinit var chartViewModel: ChartViewModel
     private lateinit var songbirdChartView: SongbirdChartView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,11 +61,9 @@ class SampleSongbirdChartActivity : AppCompatActivity() {
         )
     }
 
-    private fun setChartViewModel(chartViewModel: AudioChartViewModel) {
+    private fun setChartViewModel(chartViewModel: ChartViewModel) {
         this.chartViewModel = chartViewModel
-        chartViewModel.apply {
-            songbirdChartView.setViewModel(chartViewModel)
-        }
+        songbirdChartView.setViewModel(chartViewModel)
     }
 
     private fun playSummaryAudio() {
@@ -90,7 +88,7 @@ class SampleSongbirdChartActivity : AppCompatActivity() {
             }
             R.id.settings -> {
                 startActivity(
-                    AudioChartSettingsActivity.intent(this)
+                    SettingsActivity.intent(this)
                 )
                 return true
             }

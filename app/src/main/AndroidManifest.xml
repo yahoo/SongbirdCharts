@@ -8,7 +8,7 @@
                  android:supportsRtl="true"
                  android:theme="@style/SongbirdAppTheme"
                  android:name=".base.ApplicationBase">
-        <activity android:name="com.yahoo.mobile.android.audiocharts.sample.settings.AudioChartSettingsActivity"/>
+        <activity android:name="com.yahoo.mobile.android.audiocharts.sample.settings.SettingsActivity"/>
         <activity android:name="com.yahoo.mobile.android.audiocharts.sample.SampleSongbirdChartActivity"/>
         <activity android:name=".main.MainActivity">
             <intent-filter>

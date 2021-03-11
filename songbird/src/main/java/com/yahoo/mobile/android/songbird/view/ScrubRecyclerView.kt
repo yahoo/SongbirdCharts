@@ -9,7 +9,12 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.recyclerview.widget.RecyclerView
 
-class AudioRecyclerView @JvmOverloads constructor(
+/**
+ * Handles touch and scrub events to the chart
+ * Necessary for knowing where on the chart the user is
+ * and playing the tone accordingly
+ */
+class ScrubRecyclerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
