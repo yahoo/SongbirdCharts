@@ -19,7 +19,8 @@ class AudioPlayer(
     companion object {
         const val TIMER_NAME = "Summary"
         const val TIMER_DELAY = 250L
-        const val ECHO_RATE = 0.7f
+        const val ECHO_RATE = 0.5f
+        const val NORMAL_RATE = 1f
         val tones = intArrayOf(
             R.raw.c1sharp,
             R.raw.d1sharp,
@@ -77,7 +78,7 @@ class AudioPlayer(
     }
 
     private fun playToneAtGivenProgress(benchmark: Double, y: Double) {
-        soundPool?.play(soundIds[getIndexFromY(y)], 1f, 1f, 0, 0, if (y < benchmark && echoEnabled) ECHO_RATE else 1f)
+        soundPool?.play(soundIds[getIndexFromY(y)], 1f, 1f, 0, 0, if (y < benchmark && echoEnabled) ECHO_RATE else NORMAL_RATE)
     }
 
     internal fun getIndexFromY(y: Double): Int {
