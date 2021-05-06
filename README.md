@@ -43,7 +43,7 @@ dependencies {
     // ...
 
     // Songbird SDK
-    compile 'com.yahoo.finance:songbird:1.3.0' // Use latest version
+    compile 'com.yahoo.finance:songbird:1.3.1' // Use latest versionrere
 
     // ...   
 }
