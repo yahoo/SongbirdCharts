@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.yahoo.mobile.android.songbird.player.AudioPlayer
 import com.yahoo.mobile.android.songbird.model.ScrubPointViewModel
 import com.yahoo.mobile.android.songbird.model.ChartViewModel
@@ -41,6 +42,7 @@ class SongbirdChartView @JvmOverloads constructor(
     }
     private val scrubRecyclerView = ScrubRecyclerView(context, attrs, defStyleAttr).apply {
         id = View.generateViewId()
+        overScrollMode = RecyclerView.OVER_SCROLL_NEVER
     }
     private lateinit var viewModel: ChartViewModel
     private val onScrubListener: ScrubRecyclerView.ScrubCallback = object : ScrubRecyclerView.ScrubCallback {

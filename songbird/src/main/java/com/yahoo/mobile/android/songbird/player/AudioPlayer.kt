@@ -11,7 +11,6 @@ import com.yahoo.mobile.android.songbird.R
 import java.util.Timer
 import java.util.TimerTask
 import kotlin.concurrent.schedule
-import kotlin.math.max
 
 class AudioPlayer(
     context: Context
@@ -20,62 +19,37 @@ class AudioPlayer(
     companion object {
         const val TIMER_NAME = "Summary"
         const val TIMER_DELAY = 250L
+        const val ECHO_RATE = 0.5f
+        const val NORMAL_RATE = 1f
         val tones = intArrayOf(
-            R.raw.c1sharp_no_reverb,
-            R.raw.d1sharp_no_reverb,
-            R.raw.f1sharp_no_reverb,
-            R.raw.g1sharp_no_reverb,
-            R.raw.a1sharp_no_reverb,
-            R.raw.c2sharp_no_reverb,
-            R.raw.d2sharp_no_reverb,
-            R.raw.f2sharp_no_reverb,
-            R.raw.g2sharp_no_reverb,
-            R.raw.a2sharp_no_reverb,
-            R.raw.c3sharp_no_reverb,
-            R.raw.d3sharp_no_reverb,
-            R.raw.f3sharp_no_reverb,
-            R.raw.g3sharp_no_reverb,
-            R.raw.a3sharp_no_reverb,
-            R.raw.c4sharp_no_reverb,
-            R.raw.d4sharp_no_reverb,
-            R.raw.f4sharp_no_reverb,
-            R.raw.g4sharp_no_reverb,
-            R.raw.a4sharp_no_reverb,
-            R.raw.c5sharp_no_reverb,
-            R.raw.d5sharp_no_reverb,
-            R.raw.f5sharp_no_reverb,
-            R.raw.g5sharp_no_reverb,
-            R.raw.a5sharp_no_reverb
+            R.raw.c1sharp,
+            R.raw.d1sharp,
+            R.raw.f1sharp,
+            R.raw.g1sharp,
+            R.raw.a1sharp,
+            R.raw.c2sharp,
+            R.raw.d2sharp,
+            R.raw.f2sharp,
+            R.raw.g2sharp,
+            R.raw.a2sharp,
+            R.raw.c3sharp,
+            R.raw.d3sharp,
+            R.raw.f3sharp,
+            R.raw.g3sharp,
+            R.raw.a3sharp,
+            R.raw.c4sharp,
+            R.raw.d4sharp,
+            R.raw.f4sharp,
+            R.raw.g4sharp,
+            R.raw.a4sharp,
+            R.raw.c5sharp,
+            R.raw.d5sharp,
+            R.raw.f5sharp,
+            R.raw.g5sharp,
+            R.raw.a5sharp
         )
     }
 
-    private val tonesReverb = intArrayOf(
-        R.raw.c1sharp_reverb,
-        R.raw.d1sharp_reverb,
-        R.raw.f1sharp_reverb,
-        R.raw.g1sharp_reverb,
-        R.raw.a1sharp_reverb,
-        R.raw.c2sharp_reverb,
-        R.raw.d2sharp_reverb,
-        R.raw.f2sharp_reverb,
-        R.raw.g2sharp_reverb,
-        R.raw.a2sharp_reverb,
-        R.raw.c3sharp_reverb,
-        R.raw.d3sharp_reverb,
-        R.raw.f3sharp_reverb,
-        R.raw.g3sharp_reverb,
-        R.raw.a3sharp_reverb,
-        R.raw.c4sharp_reverb,
-        R.raw.d4sharp_reverb,
-        R.raw.f4sharp_reverb,
-        R.raw.g4sharp_reverb,
-        R.raw.a4sharp_reverb,
-        R.raw.c5sharp_reverb,
-        R.raw.d5sharp_reverb,
-        R.raw.f5sharp_reverb,
-        R.raw.g5sharp_reverb,
-        R.raw.a5sharp_reverb
-    )
     private var high = 0.0
     private var low = 0.0
     private var maxTone = tones.size-1
@@ -84,18 +58,8 @@ class AudioPlayer(
 
     private var timer: TimerTask? = null
     private var currentY = 0.0
-    private val sounds = mutableListOf<Int>()
-    private val soundsReverb = mutableListOf<Int>()
+    private val soundIds = mutableListOf<Int>()
     private var soundPool: SoundPool? = SoundPool.Builder()
-        .setMaxStreams(6)
-        .setAudioAttributes(
-            AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_ASSISTANCE_ACCESSIBILITY)
-                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .build()
-        )
-        .build()
-    private var soundPoolReverb: SoundPool? = SoundPool.Builder()
         .setMaxStreams(6)
         .setAudioAttributes(
             AudioAttributes.Builder()
@@ -107,23 +71,14 @@ class AudioPlayer(
 
     init {
         for (tone in tones) {
-            sounds.add(
+            soundIds.add(
                 soundPool?.load(context, tone, 0) ?: 0
-            )
-        }
-        for (tone in tonesReverb) {
-            soundsReverb.add(
-                soundPoolReverb?.load(context, tone, 0) ?: 0
             )
         }
     }
 
     private fun playToneAtGivenProgress(benchmark: Double, y: Double) {
-        if (y < benchmark && echoEnabled) {
-            soundPoolReverb?.play(soundsReverb[getIndexFromY(y)], 1f, 1f, 0, 0, 1f)
-        } else {
-            soundPool?.play(sounds[getIndexFromY(y)], 1f, 1f, 0, 0, 1f)
-        }
+        soundPool?.play(soundIds[getIndexFromY(y)], 1f, 1f, 0, 0, if (y < benchmark && echoEnabled) ECHO_RATE else NORMAL_RATE)
     }
 
     internal fun getIndexFromY(y: Double): Int {

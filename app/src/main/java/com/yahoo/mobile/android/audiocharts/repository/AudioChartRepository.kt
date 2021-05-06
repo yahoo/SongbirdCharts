@@ -13,7 +13,7 @@ import kotlin.random.Random
 
 object AudioChartRepository {
 
-    private const val NUMBER_OF_POINTS = 15
+    private const val NUMBER_OF_POINTS = 50
     private val audioChartSettingsHelper = SettingsHelper(ApplicationBase.instance)
 
     /**
@@ -52,8 +52,8 @@ object AudioChartRepository {
     private fun generateSamplePoints(): List<ScrubPointViewModel> {
         val points = mutableListOf<ScrubPointViewModel>()
         val startTime = System.currentTimeMillis()
+        var value = Random.nextDouble(0.0, 100.0)
         for (i in 0 until NUMBER_OF_POINTS) {
-            val value = Random.nextDouble(0.0, 100.0)
             val timestamp = startTime + TimeUnit.MINUTES.toMillis(i.toLong())
             points.add(
                 ScrubPointViewModel(
@@ -68,6 +68,7 @@ object AudioChartRepository {
                     // On Swipe Callback
                 }
             )
+            value += Random.nextInt(-5, 5)
         }
         return points
     }
